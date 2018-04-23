@@ -1,0 +1,1 @@
+Create a database with a schema named 'banking' and a table named 'ingredients'
