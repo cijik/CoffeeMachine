@@ -23,7 +23,8 @@ public class ConnectionHandler implements Repository {
     }
 
     private void init() throws SQLException {
-        String[] sql = {"INSERT INTO ingredients VALUES ('COFFEE', 1000);",
+        String[] sql = {"TRUNCATE ingredients",
+                "INSERT INTO ingredients VALUES ('COFFEE', 1000);",
                 "INSERT INTO ingredients VALUES ('WATER', 2000);",
                 "INSERT INTO ingredients VALUES ('MILK', 1000);",
                 "INSERT INTO ingredients VALUES ('CHOCOLATE', 1000);",
