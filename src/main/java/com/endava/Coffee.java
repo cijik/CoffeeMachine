@@ -9,7 +9,7 @@ public class Coffee {
     private final double chocolate;
     private final double milkFoam;
 
-    protected static class Builder {
+    public static class Builder {
         private final double coffee;
 
         private double milk = 0.0;

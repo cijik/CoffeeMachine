@@ -1,13 +1,16 @@
 package com.endava;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ConnectionHandler implements Repository {
 
     private Connection con;
+    private Logger log = LoggerFactory.getLogger(ConnectionHandler.class);
 
     ConnectionHandler(Connection connection) {
         this.con = connection;
@@ -15,17 +18,17 @@ public class ConnectionHandler implements Repository {
             con.setAutoCommit(false);
             init();
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.error("Cannot perform SQL operation");
         }
     }
 
     private void init() throws SQLException {
-        String[] sql = {"insert into banking.ingredients values ('COFFEE', 1000);",
-                "insert into banking.ingredients values ('WATER', 2000);",
-                "insert into banking.ingredients values ('MILK', 1000);",
-                "insert into banking.ingredients values ('CHOCOLATE', 1000);",
-                "insert into banking.ingredients values ('MILKFOAM', 1000);",
-                "insert into banking.ingredients values ('SUGAR', 100);"};
+        String[] sql = {"INSERT INTO ingredients VALUES ('COFFEE', 1000);",
+                "INSERT INTO ingredients VALUES ('WATER', 2000);",
+                "INSERT INTO ingredients VALUES ('MILK', 1000);",
+                "INSERT INTO ingredients VALUES ('CHOCOLATE', 1000);",
+                "INSERT INTO ingredients VALUES ('MILKFOAM', 1000);",
+                "INSERT INTO ingredients VALUES ('SUGAR', 100);"};
         PreparedStatement stmt;
         for (String s : sql) {
             stmt = con.prepareStatement(s);

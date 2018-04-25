@@ -1,5 +1,8 @@
 package com.endava;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -9,16 +12,24 @@ public class Main {
     public static void main(String[] args) throws SQLException {
 
         Scanner sc = new Scanner(System.in);
+        Logger log = LoggerFactory.getLogger(Main.class);
 
-        String address = "jdbc:mysql://localhost:3306/temp?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+        final String dialect = "mysql";
+        final String host = "localhost";
+        final int port = 3306;
+        final String schema = "banking";
+        final String timezone = "UTC";
+        String address = String.format("jdbc:%s://%s:%d/%s?serverTimezone=%s", dialect, host, port, schema, timezone);
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            log.error("Unable to load database driver");
         }
 
-        ConnectionHandler handler = new ConnectionHandler(DriverManager.getConnection(address, "root", "stasik"));
+        final String user = "root";
+        final String password = "stasik";
+        ConnectionHandler handler = new ConnectionHandler(DriverManager.getConnection(address, user, password));
 
         MenuCreator menu = new MenuCreator(handler, sc);
         menu.choiceMenu();
