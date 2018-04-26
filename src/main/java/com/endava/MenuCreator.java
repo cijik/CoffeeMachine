@@ -81,7 +81,7 @@ public class MenuCreator {
 
         connectionHandler.update(request, values);
         try {
-            System.out.println(cup.toString() + "\nHere's your coffee. Have a nice day!");
+            System.out.println(cup + "\nHere's your coffee. Have a nice day!");
         } catch (NullPointerException e) {
             System.out.println("Not enough money");
         }

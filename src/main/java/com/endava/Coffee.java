@@ -61,4 +61,15 @@ public class Coffee {
         milkFoam = builder.milkFoam;
     }
 
+    @Override
+    public String toString() {
+        return "Coffee{" +
+                "coffee=" + coffee +
+                ", milk=" + milk +
+                ", sugar=" + sugar +
+                ", water=" + water +
+                ", chocolate=" + chocolate +
+                ", milkFoam=" + milkFoam +
+                '}';
+    }
 }

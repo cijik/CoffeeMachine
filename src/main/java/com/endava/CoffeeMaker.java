@@ -4,6 +4,8 @@ import javafx.util.Pair;
 
 import java.util.HashMap;
 
+import static com.endava.Ingredients.*;
+
 public class CoffeeMaker {
 
 
@@ -15,13 +17,10 @@ public class CoffeeMaker {
             case 1:
                 balance -= 10;
                 if (balance >= 0) {
-                    values.put(Ingredients.COFFEE, values.get(Ingredients.COFFEE) - 50);
-                    values.put(Ingredients.WATER, values.get(Ingredients.WATER) - 50);
-                    values.put(Ingredients.SUGAR, values.get(Ingredients.SUGAR) - sugar);
-                    cup = new Coffee.Builder(0.5)
-                            .addWater(0.5)
-                            .addSugar(sugar)
-                            .build();
+                    values.put(COFFEE, values.get(COFFEE) - 50);
+                    values.put(WATER, values.get(WATER) - 50);
+                    values.put(SUGAR, values.get(SUGAR) - sugar);
+                    cup = new Americano().brew(sugar);
                 } else {
                     balance += 10;
                 }
@@ -29,17 +28,12 @@ public class CoffeeMaker {
             case 2:
                 balance -= 10;
                 if (balance >= 0) {
-                    values.put(Ingredients.COFFEE, values.get(Ingredients.COFFEE) - 50);
-                    values.put(Ingredients.MILK, values.get(Ingredients.MILK) - 16);
-                    values.put(Ingredients.CHOCOLATE, values.get(Ingredients.CHOCOLATE) - 16);
-                    values.put(Ingredients.MILKFOAM, values.get(Ingredients.MILKFOAM) - 16);
-                    values.put(Ingredients.SUGAR, values.get(Ingredients.SUGAR) - sugar);
-                    cup = new Coffee.Builder(0.5)
-                            .addMilk(0.16)
-                            .addChocolate(0.16)
-                            .addMilkFoam(0.16)
-                            .addSugar(sugar)
-                            .build();
+                    values.put(COFFEE, values.get(COFFEE) - 50);
+                    values.put(MILK, values.get(MILK) - 16);
+                    values.put(CHOCOLATE, values.get(CHOCOLATE) - 16);
+                    values.put(MILKFOAM, values.get(MILKFOAM) - 16);
+                    values.put(SUGAR, values.get(SUGAR) - sugar);
+                    cup = new Cappucino().brew(sugar);
                 } else {
                     balance += 10;
                 }
@@ -47,13 +41,10 @@ public class CoffeeMaker {
             case 3:
                 balance -= 10;
                 if (balance >= 0) {
-                    values.put(Ingredients.COFFEE, values.get(Ingredients.COFFEE) - 80);
-                    values.put(Ingredients.MILKFOAM, values.get(Ingredients.MILKFOAM) - 20);
-                    values.put(Ingredients.SUGAR, values.get(Ingredients.SUGAR) - sugar);
-                    cup = new Coffee.Builder(0.8)
-                            .addMilkFoam(0.2)
-                            .addSugar(sugar)
-                            .build();
+                    values.put(COFFEE, values.get(COFFEE) - 80);
+                    values.put(MILKFOAM, values.get(MILKFOAM) - 20);
+                    values.put(SUGAR, values.get(SUGAR) - sugar);
+                    cup = new Macchiato().brew(sugar);
                 } else {
                     balance += 10;
                 }
@@ -61,11 +52,9 @@ public class CoffeeMaker {
             case 4:
                 balance -= 5;
                 if (balance >= 0) {
-                    values.put(Ingredients.COFFEE, values.get(Ingredients.COFFEE) - 60);
-                    values.put(Ingredients.SUGAR, values.get(Ingredients.SUGAR) - sugar);
-                    cup = new Coffee.Builder(0.6)
-                            .addSugar(sugar)
-                            .build();
+                    values.put(COFFEE, values.get(COFFEE) - 60);
+                    values.put(SUGAR, values.get(SUGAR) - sugar);
+                    cup = new Espresso().brew(sugar);
                 } else {
                     balance += 5;
                 }
